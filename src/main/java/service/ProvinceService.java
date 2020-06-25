@@ -5,7 +5,7 @@ import model.Province;
 public interface ProvinceService {
     Iterable<Province> findAll();
 
-//    Iterable<Province> findAllById(Long id);
+    Iterable<Province> findAllById(Iterable<Long> id);
 
 
     Province findById(Long id);

@@ -12,6 +12,8 @@ import org.springframework.web.servlet.ModelAndView;
 import service.ProvinceService;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @Controller
 public class ProvinceController {
@@ -27,14 +29,21 @@ public class ProvinceController {
         return modelAndView;
     }
 
+    @GetMapping("/provinces/{id}")
+    public String listProvincesByIds(@PathVariable Long id, Model model){
+        Long ids[] = {Long.valueOf(id), Long.valueOf(101), Long.valueOf(102)};
+        Iterable<Long> iterable = Arrays.asList(ids);
+        Iterable<Province> provinces = provinceService.findAllById(iterable);
+        model.addAttribute("provinces", provinces);
+        return "/province/list";
+    }
 
-
-//    @GetMapping("/provinces/{id}")
-//    public String listProvincesById(@PathVariable Long id, Model model){
-//        Iterable<Province> provinces = provinceService.findAllById(id);
-//        model.addAttribute("provinces", provinces);
-//        return "/province/list";
-//    }
+    @GetMapping("/province/{id}")
+    public String listProvincesById(@PathVariable Long id, Model model){
+        Province provinces = provinceService.findById(id);
+        model.addAttribute("provinces", provinces);
+        return "/province/list";
+    }
 
 
 

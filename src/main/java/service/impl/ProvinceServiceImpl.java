@@ -14,16 +14,18 @@ public class ProvinceServiceImpl implements ProvinceService {
         return provinceRepository.findAll();
     }
 
-//    @Override
-//    public Iterable<Province> findAllById(Long id) {
-//        return provinceRepository.findAll(id);
-//    }
-
+    @Override
+    public Iterable<Province> findAllById(Iterable<Long> id) {
+        return provinceRepository.findAll(id);
+    }
 
     @Override
     public Province findById(Long id) {
         return provinceRepository.findOne(id);
     }
+//##################################################################33
+
+
 
     @Override
     public void save(Province province) {
