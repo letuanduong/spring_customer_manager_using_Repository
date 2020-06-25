@@ -45,6 +45,14 @@ public class ProvinceController {
         return "/province/list";
     }
 
+    @GetMapping("/province-notnull/{name}")
+    public ModelAndView listProvinceNotNull(@PathVariable String name){
+        ModelAndView mv = new ModelAndView("/province/list");
+        Iterable<Province> provinces = provinceService.testMethodOfSpring(name);
+        mv.addObject("provinces", provinces);
+        return mv;
+    }
+
 
 
 

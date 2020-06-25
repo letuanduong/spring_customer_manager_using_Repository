@@ -19,13 +19,31 @@ public class ProvinceServiceImpl implements ProvinceService {
         return provinceRepository.findAll(id);
     }
 
+//    @Override
+//    public Iterable<Province> testMethodOfSpring() {
+//        return null;
+//    }
+
+
     @Override
     public Province findById(Long id) {
         return provinceRepository.findOne(id);
     }
-//##################################################################33
+//##################################################################
+
+    @Override
+    public Iterable<Province> testMethodOfSpring() {
+        return provinceRepository.findAllByIdIsNotNull();
+    }
+
+        @Override
+    public Iterable<Province> testMethodOfSpring(String name) {
+        return provinceRepository.findProvinceByNameEquals(name);
+    }
 
 
+
+//################################################################
 
     @Override
     public void save(Province province) {
